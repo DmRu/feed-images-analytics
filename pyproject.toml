@@ -1,0 +1,13 @@
+[project]
+name = "feed-images-analytics"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pillow>=11.3.0",
+    "python-io>=0.3",
+    "streamlit>=1.48.1",
+    "validators>=0.35.0",
+    "xml-python>=0.4.3",
+]
