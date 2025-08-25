@@ -134,13 +134,18 @@ if start_analyse:
         tree = ET.parse("temp/feed.xml")
         root = tree.getroot()
 
-        for image_tag in root.findall('.//picture'):
-            image_url = image_tag.text.strip()
+        for offer in root.iter('offer'):
+            image_url = offer.find('picture').text.strip()
             if not image_url:
                 continue
             image_urls.append(image_url)
 
-        # st.divider()
+        # for image_tag in root.findall('.//picture'):
+        #     image_url = image_tag.text.strip()
+        #     if not image_url:
+        #         continue
+        #     image_urls.append(image_url)
+
         container = st.container(border=True)
         left_1, right_1 = container.columns(2)
         left_1.subheader('Размеры изображений')
@@ -158,6 +163,9 @@ if start_analyse:
 
         for index, image_url in enumerate(image_urls):
             print(image_url)
+            if '.mp4' in image_url:
+                print('Detected .mp4')
+                continue
             analyse_progress_bar.progress(index / len(image_urls), text=f'Analyse images: {index}/{len(image_urls)}')
 
             # Загружаем изображение
