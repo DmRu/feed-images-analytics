@@ -1,0 +1,10 @@
+services:
+  analytics:
+    build: .
+    container_name: feed-images-analytics
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./images:/app/images
+      - ./temp:/app/temp
+    restart: unless-stopped
